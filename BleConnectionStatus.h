@@ -16,6 +16,7 @@ public:
   void onDisconnect(BLEServer* pServer);
   BLECharacteristic* inputKeyboard;
   BLECharacteristic* outputKeyboard;
+  BLECharacteristic* inputMediaKeys;
   BLECharacteristic* inputMouse;
 };
 
