@@ -170,10 +170,11 @@ void BleComboKeyboard::taskServer(void* pvParameter) {
   bleKeyboardInstance->inputMediaKeys = bleKeyboardInstance->hid->inputReport(MEDIA_KEYS_ID);
   bleKeyboardInstance->connectionStatus->inputKeyboard = bleKeyboardInstance->inputKeyboard;
   bleKeyboardInstance->connectionStatus->outputKeyboard = bleKeyboardInstance->outputKeyboard;
-  
+
   bleKeyboardInstance->inputMouse = bleKeyboardInstance->hid->inputReport(MOUSE_ID); // <-- input REPORTID from report map
   bleKeyboardInstance->connectionStatus->inputMouse = bleKeyboardInstance->inputMouse;
- 
+  bleKeyboardInstance->connectionStatus->inputMediaKeys = bleKeyboardInstance->inputMediaKeys;
+
   bleKeyboardInstance->outputKeyboard->setCallbacks(new KeyboardOutputCallbacks());
 
   bleKeyboardInstance->hid->manufacturer()->setValue(bleKeyboardInstance->deviceManufacturer);
@@ -502,4 +503,3 @@ size_t BleComboKeyboard::write(const uint8_t *buffer, size_t size) {
 	}
 	return n;
 }
-
